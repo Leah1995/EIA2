@@ -1,7 +1,5 @@
 namespace StudiVZ {
     interface StudentData {
-        
-        // Datenstruktur
         Matrikelnummer: number;
         Name: string;
         Vorname: string;
@@ -11,46 +9,39 @@ namespace StudiVZ {
     }
     var students: StudentData[] = [];
     var stop: boolean = false;
-
-    // Solange stop das booleansche Ergebnis false erhält, wird der Codeblock ausgeführt
+    
     while (!stop) {
         
-        // Variable action gibt prompt aus
         var action: string = prompt("n= Datensatz anlegen, a= abfragen oder s= Programm beenden \nn,a oder s eingeben");
 
         switch (action) {
             case "n":
-            case "N": // hier wird die Funktion saveData eingesetzt
+            case "N":
                 var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0=w oder 1=m) und Kommentar");
                 alert(saveData(input));
-                break; // springt aus der switch-Struktur raus, sobald die case-Alternative ausgewertet worden ist
+                break;
             case "a":
-            case "A": // bei Eingabe erhält die Matrikelnummer eine Variable
+            case "A":
                 var matrikel: number = parseInt(prompt("Eingabe Matrikelnummer"));
                 alert(queryData(matrikel));
                 break;
             case "s":
             case "S":
-                stop = true; // true, da die while-Schleife angehalten wird
+                stop = true;
         }
     } // While-Schleife
 
     function saveData(_input: string): string {
 
-        // Unterteilen
-        let dataArray: string[] = _input.split(","); // split gibt ein Array zurück
+        let dataArray: string[] = _input.split(",");
 
         let studentData: StudentData = {
 
-            // String in Number verwandeln
             Matrikelnummer: parseInt(dataArray[0]),
-            Name: dataArray[1], // nimmt mit 1 das zweite Element aus dem Array
+            Name: dataArray[1],
             Vorname: dataArray[2],
             Alter: parseInt(dataArray[3]),
-
-            // Eingegebene Zahl (0) kann nachher verwendet werden
             Geschlecht: parseInt(dataArray[4]) == 0,
-
             Kommentar: dataArray[5]
         };
 
@@ -63,8 +54,7 @@ namespace StudiVZ {
         
         let geschlecht: string;
 
-        // If-Else für Geschlecht
-        
+        // If-Else für Geschlecht       
         if (parseInt(dataArray[4]) == 0) {
             geschlecht = "w"; // 0 wird in string verwandelt
         }
@@ -86,7 +76,7 @@ namespace StudiVZ {
             // wenn sie schon eingegeben wurde:
             if (students[i].Matrikelnummer == _matrikelnummer) {
                 
-                // Variable als Interface-Parameter speichern                
+                // Variable als Interface-Parameter speichern 
                 let geschlecht: string = students[i].Geschlecht ? "w" : "m";
                 
                 return "Folgende Daten wurden zu dieser Nummer gefunden " + students[i].Matrikelnummer + "\nName: " + students[i].Name + ", "
@@ -97,6 +87,7 @@ namespace StudiVZ {
                 // Als Fehler ausgeben für den Benutzer
             }
         } // Ende der For-Schleife
+        
         return "Die Nummer wurde leider nicht gefunden";
 
     }  // Query-Data

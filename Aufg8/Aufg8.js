@@ -3,17 +3,18 @@ var Boxes;
     window.addEventListener("load", init);
     function init() {
         let boxes = prompt("Hier eine Zahl zwischen 10 und 100 eingeben.");
-        let boxesNumber = parseInt;
-        if (boxesNumber >= 10 && boxesNumber <= 100) {
-            for (let i; i < boxesNumber; i++) {
-                drawBox(Math.random() * window.innerWidth - 40, Math.random() * window.innerHeight - 40, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
-            }
-        }
-        else {
-            alert("Bitte nochmal versuchen");
-            init();
-        }
-    }
+        let boxNumber = parseInt;
+        //        if (boxNumber >= 10 && boxNumber <= 100) { // Vergleichsoperator gleich bzw. drunter/dr�ber
+        //            for (let i: number = 0; i < boxNumber; i++) {
+        //                drawBox(Math.random() * window.innerWidth, Math.random() * window.innerHeight, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
+        //            }
+        //        }
+        //        // wenn etwas falsches eingegeben wurde
+        //        else {
+        //            alert("Bitte nochmal versuchen");
+        //            init();
+        //        }
+    } // Init
     // Boxen zeichnen
     function drawBox(_x, y, _color) {
         let box = document.createElement("div"); // erstelle Methode
