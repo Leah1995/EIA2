@@ -51,7 +51,6 @@ var L4_Schneelandschaft;
         L4_Schneelandschaft.crc2.beginPath();
         L4_Schneelandschaft.crc2.fillStyle = "#F8FCFE";
         L4_Schneelandschaft.crc2.fillRect(170, 230, 100, 70);
-        // tester.drawSkiF(tester);
         // Sonne
         L4_Schneelandschaft.crc2.beginPath();
         L4_Schneelandschaft.crc2.arc(690, 70, 45, 0, 2 * Math.PI); // x, y, size

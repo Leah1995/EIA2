@@ -61,12 +61,7 @@ namespace L4_Schneelandschaft {
         crc2.beginPath();
         crc2.fillStyle = "#F8FCFE";
         crc2.fillRect(170, 230, 100, 70);
-
-
-
-       // tester.drawSkiF(tester);
-        
-        
+               
         // Sonne
         crc2.beginPath();
         crc2.arc(690, 70, 45, 0, 2 * Math.PI); // x, y, size
