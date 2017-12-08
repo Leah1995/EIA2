@@ -157,7 +157,7 @@ var Aufgabe6;
         Aufgabe6.crc2.fillStyle = _topColor;
         Aufgabe6.crc2.fill();
     }
-    // Animation //
+    // Animation
     function animate() {
         console.log("Timeout");
         // Zur�cksetzen und neu erstellen

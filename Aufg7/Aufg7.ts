@@ -7,6 +7,7 @@ namespace StudiVZ {
         Geschlecht: boolean; // false or true
         Kommentar: string;
     }
+    
     var students: StudentData[] = [];
     var stop: boolean = false;
     

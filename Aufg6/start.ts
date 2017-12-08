@@ -186,7 +186,7 @@ namespace Aufgabe6 {
         crc2.fill();
     }
 
-    // Animation //
+    // Animation
     function animate(): void {
         console.log("Timeout");
 
