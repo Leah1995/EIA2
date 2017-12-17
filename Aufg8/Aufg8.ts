@@ -10,7 +10,7 @@ namespace Aufgabe8 {
                 init(Math.random() * window.innerWidth, Math.random() * window.innerHeight, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
             }
         }
-        
+
         // wenn etwas falsches eingegeben wurde
         else {
             alert("Nochmal versuchen");

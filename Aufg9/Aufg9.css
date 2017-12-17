@@ -1,0 +1,46 @@
+@import
+	url('https://fonts.googleapis.com/css?family=Anton|UnifrakturMaguntia')
+	;
+
+div {
+	float: left;
+	width: 90%;
+}
+
+body {
+	background: url(newspaper.jpg);
+	background-opacity: 0.5;
+}
+
+h1 {
+	font-family: 'UnifrakturMaguntia', cursive;
+}
+
+p {
+	margin: 20px;
+	padding: 1%;
+	border: 1px solid black;
+	/* 	padding-left: 50px; */
+	text-align: center;
+	width: 85%;
+	background: white; div { float : left;
+	width: 90%;
+}
+
+/* Anpassung */
+@media screen and (min-width: 35em) {
+	canvas {
+		width: 100%;
+	}
+	@media screen and (min-width: 48em) {
+		canvas {
+			width: 100%;
+		}
+		@media screen and (min-width: 64em) {
+			canvas {
+				width: 800px;
+				height: 600px;
+			}
+		}
+	}
+}
