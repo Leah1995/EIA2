@@ -2,6 +2,7 @@ var Aufgabe9;
 (function (Aufgabe9) {
     window.addEventListener("load", init); // Maus
     window.addEventListener("keydown", handleKeydown); // Tastatur
+    //Array f�r die Buchstaben
     let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     let saveLetter = ""; // Angeklickter Buchstabe wird gespeichert    
     let chosenLetter;
@@ -18,10 +19,20 @@ var Aufgabe9;
                 collect[i].style.color = "black"; // nicht angeklickte Buchstaben
                 collect[i].style.fontSize = "100%";
             }
-        }
+        } // for-Schleife
     } // Funktion
-    // anklickbare Buchstaben
     function init(_event) {
+        // Platz f�r den Brief
+        let brief = document.createElement("div");
+        brief.style.width = "90%";
+        brief.style.height = "60%";
+        brief.style.margin = "1%";
+        brief.style.border = "30px ridge hsl(" + Math.random() * 80 + ", 25%, 85%)";
+        brief.style.borderRadius = "50px";
+        brief.style.backgroundColor = "hsl(" + Math.random() * 80 + ", 55%, 85%)";
+        brief.addEventListener("click", setLetter);
+        document.body.appendChild(brief);
+        // anklickbare Buchstaben
         for (let i = 0; i < letters.length; i++) {
             let div = document.createElement("div");
             div.style.height = "5%";
@@ -36,16 +47,6 @@ var Aufgabe9;
             div.addEventListener("click", writeLetters);
             document.body.appendChild(div);
         } // for-Schleife
-        // Platz f�r den Brief
-        let brief = document.createElement("div");
-        brief.style.width = "90%";
-        brief.style.height = "60%";
-        brief.style.margin = "1%";
-        brief.style.border = "30px ridge hsl(" + Math.random() * 80 + ", 25%, 85%)";
-        brief.style.borderRadius = "50px";
-        brief.style.backgroundColor = "hsl(" + Math.random() * 80 + ", 55%, 85%)";
-        brief.addEventListener("click", setLetter);
-        document.body.appendChild(brief);
     } // Funktion
     function writeLetters(_event) {
         let box = _event.target;
@@ -57,8 +58,8 @@ var Aufgabe9;
             if (chosenLetter != divList[i].id) {
                 divList[i].style.color = "black";
             }
-        }
-    }
+        } // for-Schleife
+    } // Funktion
     // Buchstaben im Brief mit der Maus
     function setLetter(event) {
         let text = document.createElement("div");
@@ -76,14 +77,14 @@ var Aufgabe9;
         text.style.top = event.pageY + "px";
         text.addEventListener("click", setLetters);
         document.body.appendChild(text);
-    }
+    } // Funktion
     // Buchstaben im Brief mit der Tastatur
     function handleKeydown(_event) {
         if (letters.indexOf(_event.key.toUpperCase()) != -1) {
             let remove = document.getElementById(_event.key);
             saveLetter = _event.key.toUpperCase();
         }
-    }
+    } // Funktion
     // Buchstaben l�schen lassen
     function setLetters(_event) {
         if (_event.altKey == false)
@@ -92,6 +93,6 @@ var Aufgabe9;
             let remove = _event.target;
             document.body.removeChild(remove);
         }
-    }
-})(Aufgabe9 || (Aufgabe9 = {}));
+    } // Funktion
+})(Aufgabe9 || (Aufgabe9 = {})); // namespace
 //# sourceMappingURL=Aufgabe9.js.map

@@ -3,6 +3,7 @@ namespace Aufgabe9 {
     window.addEventListener("load", init); // Maus
     window.addEventListener("keydown", handleKeydown); // Tastatur
 
+    //Array für die Buchstaben
     let letters: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     let saveLetter: string = ""; // Angeklickter Buchstabe wird gespeichert    
     let chosenLetter: string;
@@ -23,12 +24,26 @@ namespace Aufgabe9 {
                 collect[i].style.color = "black"; // nicht angeklickte Buchstaben
                 collect[i].style.fontSize = "100%";
             }
-        }
+        } // for-Schleife
     } // Funktion
     
    
-    // anklickbare Buchstaben
+    
     function init(_event: Event): void {
+        
+        // Platz für den Brief
+        let brief: HTMLDivElement = document.createElement("div");
+        brief.style.width = "90%";
+        brief.style.height = "60%";
+        brief.style.margin = "1%";
+        brief.style.border = "30px ridge hsl(" + Math.random() * 80 + ", 25%, 85%)";
+        brief.style.borderRadius = "50px";
+        brief.style.backgroundColor = "hsl(" + Math.random() * 80 + ", 55%, 85%)";
+
+        brief.addEventListener("click", setLetter);
+        document.body.appendChild(brief);
+        
+        // anklickbare Buchstaben
         for (let i: number = 0; i < letters.length; i++) {
             let div: HTMLDivElement = document.createElement("div");
 
@@ -45,18 +60,7 @@ namespace Aufgabe9 {
             div.addEventListener("click", writeLetters);
             document.body.appendChild(div);
         } // for-Schleife
-
-        // Platz für den Brief
-        let brief: HTMLDivElement = document.createElement("div");
-        brief.style.width = "90%";
-        brief.style.height = "60%";
-        brief.style.margin = "1%";
-        brief.style.border = "30px ridge hsl(" + Math.random() * 80 + ", 25%, 85%)";
-        brief.style.borderRadius = "50px";
-        brief.style.backgroundColor = "hsl(" + Math.random() * 80 + ", 55%, 85%)";
-
-        brief.addEventListener("click", setLetter);
-        document.body.appendChild(brief);
+        
     } // Funktion
 
 
@@ -74,8 +78,8 @@ namespace Aufgabe9 {
             if (chosenLetter != divList[i].id) {
                 divList[i].style.color = "black";
             }
-        }
-    }
+        } // for-Schleife
+    } // Funktion
 
 
     // Buchstaben im Brief mit der Maus
@@ -98,7 +102,7 @@ namespace Aufgabe9 {
 
         text.addEventListener("click", setLetters);
         document.body.appendChild(text);
-    }
+    } // Funktion
 
 
     // Buchstaben im Brief mit der Tastatur
@@ -107,7 +111,7 @@ namespace Aufgabe9 {
             let remove: HTMLDivElement = <HTMLDivElement>document.getElementById(_event.key);
             saveLetter = _event.key.toUpperCase();
         }
-    }
+    } // Funktion
 
     // Buchstaben löschen lassen
     function setLetters(_event: MouseEvent): void {
@@ -118,6 +122,6 @@ namespace Aufgabe9 {
             let remove: HTMLDivElement = <HTMLDivElement>_event.target;
             document.body.removeChild(remove);
         }
-    }
+    } // Funktion
 
-}
+} // namespace
