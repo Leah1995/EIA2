@@ -8,7 +8,7 @@ namespace Form {
     let numberFields: HTMLInputElement[] = [];
     let toppingCheckboxes: HTMLInputElement[] = [];
     let toppingNumber: number = 0;
-    
+
 
     function init(_event: Event): void {
         console.log("Init");
@@ -26,7 +26,7 @@ namespace Form {
         //2.Version
         createFlavorField();
         createToppingField();
-    };
+    }
 
 
 
@@ -37,7 +37,7 @@ namespace Form {
         let sum: number = scoopNumber * scoopPrice + toppingPrice;
 
         document.getElementById("total").textContent = "" + (sum.toFixed(2)) + "€";
-        console.log("Kugeln: " + scoopNumber + "|Kugelpreis: " + scoopPrice + "|toppinganzahl:" +  "|toppingPrice:" + toppingPrice);
+        console.log("Kugeln: " + scoopNumber + "|Kugelpreis: " + scoopPrice + "|toppinganzahl:" + "|toppingPrice:" + toppingPrice);
 
     }
 
@@ -47,11 +47,10 @@ namespace Form {
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
         console.log("Changed " + target.name + " to " + target.value);
 
-        //*/
-        //*/ note: this == _event.currentTarget in an event-handler
-        if (this.id == "radio") {
 
-
+        // this == _event.currentTarget in an event-handler
+        if (this.id == "radio"): number; {
+            //
         }
 
         if (this.id == "check") {
@@ -77,7 +76,7 @@ namespace Form {
 
         if (this.className == "flavorField") {
             scoopNumber = 0;
-            let outputField = document.getElementById("flavorOutput");
+            let outputField: HTMLElement = document.getElementById("flavorOutput");
             outputField.innerText = "";
             for (let i: number = 0; i < numberFields.length; i++) {
                 let valueString: string = numberFields[i].value;
@@ -93,10 +92,10 @@ namespace Form {
 
         //        if (this.id == "toppings") {
         console.log("Changed " + target.name + " to " + target.value);
-        let toppingOutput = document.getElementById("topping");
-        let toppingField = document.getElementById("toppings");
+        let toppingOutput: HTMLElement = document.getElementById("topping");
+        let toppingField: HTMLElement = document.getElementById("toppings");
         toppingOutput.innerText = "";
-        let toppingCheckboxes = toppingField.getElementsByTagName("input");
+        let toppingCheckboxes: NodeListOf<HTMLInputElement> = toppingField.getElementsByTagName("input");
         toppingNumber = 0;
 
         console.log(toppingCheckboxes);
@@ -122,22 +121,22 @@ namespace Form {
 
 
         if (this.name == "containerChoice") {
-            
+
             document.getElementById("container").innerText = target.value;
         }
-           
-        
+
+
     }
-  
+
 
     function createContainerField(): void {
-        let containerField = document.createElement("fieldset");
+        let containerField: HTMLFieldSetElement = document.createElement("fieldset");
         containerField.id = "radio";
-        let mainDiv = document.getElementById("main");
+        let mainDiv: HTMLElement = document.getElementById("main");
         mainDiv.appendChild(containerField);
 
         //Legende für containerField
-        let legend = document.createElement("legend");
+        let legend: string = document.createElement("legend");
         legend.innerText = "Halterung";
         containerField.appendChild(legend);
         let containerCheckboxes: HTMLInputElement[] = [];
@@ -147,21 +146,21 @@ namespace Form {
             let container: HTMLInputElement = <HTMLInputElement>document.createElement("input");
             container.type = "radio";
             container.value = containers[i];
-            container.name = "containerChoice"
+            container.name = "containerChoice";
             container.id = "radio" + i + 1;
             containerField.appendChild(container);
-            
+
             containerCheckboxes.push(container);
             containerCheckboxes[0].checked = true;
 
 
 
             //Labels für Behälterauswahl
-            let containerLabel = document.createElement("label");
+            let containerLabel: HTMLLabelElement = document.createElement("label");
             containerLabel.textContent = containers[i];
             containerLabel.htmlFor = "radio" + i + 1;
             containerField.appendChild(containerLabel);
-            container.addEventListener("change", handleChange);//listener an Auswahl
+            container.addEventListener("change", handleChange); //listener an Auswahl
         }
     }
 
@@ -169,13 +168,13 @@ namespace Form {
 
     function createFlavorField(): void {
         //flavorField erstellen
-        let flavorField = document.createElement("fieldset");
+        let flavorField: HTMLFieldSetElement = document.createElement("fieldset");
         flavorField.className = "flavorField";
-        let mainDiv = document.getElementById("main");
+        let mainDiv: HTMLElement = document.getElementById("main");
         mainDiv.appendChild(flavorField);
 
         //Legende
-        let legend = document.createElement("legend");
+        let legend: HTMLLegendElement = document.createElement("legend");
         legend.innerText = "Choose Your Flavors";
         flavorField.appendChild(legend);
 
@@ -183,7 +182,7 @@ namespace Form {
         for (let i: number = 0; i < flavors.length; i++) {
 
             //Number-Feld für Eiskugel-Anzahl
-            let numberInput = document.createElement("input");
+            let numberInput: HTMLInputElement = document.createElement("input");
             numberInput.type = "number";
             numberInput.id = flavors[i];
             numberInput.name = "numberInput";
@@ -197,35 +196,35 @@ namespace Form {
 
 
 
-            let nrLabel = document.createElement("label");
+            let nrLabel: HTMLLabelElement = document.createElement("label");
             nrLabel.textContent = flavors[i];
             nrLabel.htmlFor = numberInput.id;
             flavorField.appendChild(nrLabel);
             nrLabel.addEventListener("change", handleChange);
 
 
-            flavorField.addEventListener("change", handleChange);//eventListener an flavorSelect-Feld
-            numberInput.addEventListener("change", handleChange);//eventListener an scoopNumber-Feld
+            flavorField.addEventListener("change", handleChange); //eventListener an flavorSelect-Feld
+            numberInput.addEventListener("change", handleChange); //eventListener an scoopNumber-Feld
         }//createFlavorField
     }
 
     function createToppingField(): void {
 
         //toppingField erstellen
-        let toppingField = document.createElement("fieldset");
+        let toppingField: HTMLFieldSetElement = document.createElement("fieldset");
         toppingField.id = "Beleuchtung";
-        let mainDiv = document.getElementById("main");
+        let mainDiv: HTMLElement = document.getElementById("main");
         mainDiv.appendChild(toppingField);
 
         //Legende
-        let legend = document.createElement("legend");
+        let legend: HTMLLegendElement = document.createElement("legend");
         legend.innerText = "Füge eine Beleuchtung hinzu";
         toppingField.appendChild(legend);
         toppingField.addEventListener("change", handleChange);
 
         //checkbox für Array-Einträge
         for (let i: number = 0; i < toppings.length; i++) {
-            let topping = document.createElement("input");
+            let topping: HTMLElement = document.createElement("input");
             topping.type = "checkbox";
             topping.value = toppings[i];
             topping.name = "toppingCheckbox";
@@ -235,7 +234,7 @@ namespace Form {
 
 
             //Label für checkboxen
-            let toppingLabel = document.createElement("label");
+            let toppingLabel: HTMLElement = document.createElement("label");
             toppingLabel.textContent = toppings[i];
             toppingLabel.htmlFor = topping.id;
             toppingField.appendChild(toppingLabel);

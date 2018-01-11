@@ -24,7 +24,7 @@ namespace Aufgabe6 {
             let s: Skifahrer = new Skifahrer(Math.random() * canvas.width + 50, -60); // Startpunkt
             object.push(s);
             // Skifahrer tauchen wieder auf
-            if (this.x > 800) {
+            if (this.x > 800): number {
                 this.x = 0;
                 this.y = 10;
             }

@@ -1,8 +1,9 @@
 var Form;
 (function (Form) {
     window.addEventListener("load", init);
-    let schmuck = ["glitzernde Kugeln (bunt)", "matte Kugeln (bunt)", "silber Kugeln", "goldene Kugeln", "Lametta", "tanzende Figuren"];
+    let schmuck = ["glitzernde Kugeln (bunt)", "matte Kugeln (bunt)", "silberne Kugeln", "goldene Kugeln", "Lametta", "tanzende Figuren"];
     let baumkrone = ["Engel", "Sternschnuppe", "Klassischer Stern"];
+    let treetype = ["Blaufichte", "Douglasie", "Grünfichte", "Weissfichte"]
     let halterung = ["grün", "gold", "braun", "silber"];
     let anzahl = 0;
     let numberFields = [];
@@ -27,18 +28,18 @@ var Form;
     ;
     
     function calculatePrice() {
-        let scoopPrice = 1;
-        let toppingPrice = toppingNumber * 0.4;
+        let scoopPrice = 0.8;
+        let toppingPrice = toppingNumber * 45;
         let sum = anzahl * scoopPrice + toppingPrice;
-        document.getElementById("total").textContent = "" + (sum.toFixed(2)) + "€";
+        document.getElementById("total").textContent = "" + (sum.toFixed(2)) + "";
         console.log("Kugeln: " + anzahl + "|Kugelpreis: " + scoopPrice + "|toppinganzahl:" + "|toppingPrice:" + toppingPrice);
     }
     function handleChange(_event) {
     	
         let target = _event.target;
         console.log("Changed " + target.name + " to " + target.value);
-        //*/
-        //*/ note: this == _event.currentTarget in an event-handler
+        
+        // note: this == _event.currentTarget in an event-handler
         if (this.id == "radio") {
         }
         if (this.id == "check") {
@@ -50,7 +51,7 @@ var Form;
                     image.src = "Versuche es nochmal";
                     console.log("false");
                     image.style.display = "inline";
-                    inputFields[i].style.backgroundColor = "#fe8181";
+                    inputFields[i].style.backgroundColor = "red";
                 }
                 else {
                     image.src = "Bestellung wird abgeschickt";
@@ -63,7 +64,7 @@ var Form;
 
         if (this.className == "flavorField") {
             anzahl = 0;
-            let outputField = document.getElementById("flavorOutput");
+            let outputField = document.getElementById("schmuckOutput");
             outputField.innerText = "";
             for (let i = 0; i < numberFields.length; i++) {
                 let valueString = numberFields[i].value;
@@ -112,7 +113,7 @@ var Form;
         mainDiv.appendChild(containerField);
         //Legende für containerField
         let legend = document.createElement("legend");
-        legend.innerText = "Halterung";
+        legend.innerText = "HALTERUNG";
         containerField.appendChild(legend);
         let containerCheckboxes = [];
         //Behälter-Optionen für Array-Einträge
@@ -142,17 +143,17 @@ var Form;
         mainDiv.appendChild(flavorField);
         //Legende
         let legend = document.createElement("legend");
-        legend.innerText = "Schmuck";
+        legend.innerText = "SCHMUCK";
         flavorField.appendChild(legend);
         //Optionen für Array-Einträge
         for (let i = 0; i < schmuck.length; i++) {
-            //Number-Feld für Eiskugel-Anzahl
+            //Number-Feld für Schmuck-Anzahl
             let numberInput = document.createElement("input");
             numberInput.type = "number";
             numberInput.id = schmuck[i];
             numberInput.name = "numberInput";
             numberInput.step = "1";
-            numberInput.min = "1";
+            numberInput.min = "0";
             numberInput.max = "10";
             numberInput.value = "0";
             numberInput.style.display = "inline";
@@ -176,7 +177,7 @@ var Form;
         mainDiv.appendChild(toppingField);
         //Legende
         let legend = document.createElement("legend");
-        legend.innerText = "Baumkrone";
+        legend.innerText = "BAUMKRONE";
         toppingField.appendChild(legend);
         toppingField.addEventListener("change", handleChange);
         //checkbox für Array-Einträge

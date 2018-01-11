@@ -20,9 +20,10 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 	<header>
 		<h1>Weihnachtsbaumkonfigurator</h1>
-		<img id="checkImg" alt="check" src="blaufichte.jpg">
-		<img id="checkImg" alt="check" src="douglasie.png">
-		<img id="checkImg" alt="check" src="weissfichte.jpg">
+		<img src="douglasie.jpg" alt="Baum">
+		<img src="grunfichte.jpg" alt="Baum">
+		<img src="weissfichte.jpg" alt="Baum">
+		<img src="blaufichte.jpg" alt="Baum">
 	</header>
 
 	<div id="main">
@@ -31,13 +32,17 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 	<aside>
 		<fieldset id="cart">
 			<legend>Warenkorb</legend>
-			<span>Container</span>
+			<hr>
+			<span>HALTERUNG</span>
 			<div id="container"></div>
-			<span>Auswahl</span>
-			<div id="flavorOutput"></div>
+			<span>SCHMUCK</span>
+			<div id="schmuckOutput"></div>
+			<span>BAUMART</span>
+			<div id="treetype"></div>
 			<div id="topping"></div>
-			<span>Preis</span>
+			<span>Summe + Standardpreis von 50€ </span>
 			<div id="total"></div>
+			<hr>
 		</fieldset>
 		<fieldset id="delivery">
 			<legend>Lieferoptionen</legend>
@@ -47,7 +52,8 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 				name="Delivery" value="Premium Shipping" id="radio2" /> 
 					<label for="radio2">Prime (kommt am nächsten Werktag)</label> 
 				<input type="radio" name="Delivery" value="Standard Shipping"
-				id="radio3" /> <label for="radio3">Standard (kommt innerhalb von 3 Tagen)</label>
+				id="radio3" /> <label for="radio3">Standard (kommt innerhalb von 3 Tagen)</label>				
+			<hr>
 		</fieldset>
 		<fieldset id="address">
 			<legend> Addresse </legend>
@@ -60,8 +66,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 			Ort  <input type="text" name="Town" required />
 			<br>
 			Postleitzahl <input type="text" name="PostalCode" pattern="[0-9, A-Z]{5}" required />
-			<hr />
+			<br>
 			Email <input type="email" name="Email" required/>
+			<hr>
 		</fieldset>
 		
 		<button type="button" id="check">Bestellen</button><img id="checkImg" alt="check" src="wrong.png">
