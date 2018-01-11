@@ -1,0 +1,76 @@
+<!--
+Aufgabe: Aufgabe 10 FormElements: Weihnachtsbaumkonfigurator
+Name: Leah Kappelmann
+Matrikel: 254908
+Datum: 05.01.18
+	
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aufg. 10</title></head>
+<link rel="stylesheet" href="Aufg10.css">
+</head>
+<body>
+<script type="text/javascript" src="Aufg10.js"></script>
+
+<header>
+		<h1>Weihnachtsbaumkonfigurator</h1>
+	</header>
+	
+			<fieldset id="bestelluebersicht">
+				<legend> Bestellübersicht </legend>
+				<h4>Dein Traum-Baum</h4>
+				<p id="auswahl"></p>
+				<h4>PREIS</h4>
+				<p id="summe"></p>
+				
+			<button id="bestellungAbschicken" type="button">Stimmt alles? Dann bestätige hier deine Bestellung</button>
+       		</fieldset>
+
+			<fieldset id="baumart">
+				<legend> Welcher Baum soll es sein? </legend>
+				<input type="radio" name="Radiogroup" value="radio1" id="radio1" checked/>
+				<label for="radio1">Douglasie</label> <img alt="douglasie" src="douglasie.jpg">
+				<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
+				<label for="radio2">Grüne Norwegische Fichte</label> <img alt="Norweger" src="grunfichte.jpg">
+				<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
+				<label for="radio3">Weiße Nordische Fichte</label> <img alt="Weisse Fichte" src="weissfichte.jpg">
+				<input type="radio" name="Radiogroup" value="radio4" id="radio4"/>
+				<label for="radio4">Blaufichte</label> <img alt="blaufichte" src="blaufichte.jpg">				
+			</fieldset>
+			
+			<fieldset id="krone">
+				<legend>Hier kannst du den Baumkronenschmuck wählen</legend>			
+			</fieldset>
+	
+			<fieldset id="schmuckartikel">
+				<legend>Wie soll dein Baum geschmückt werden?</legend>
+			</fieldset>
+
+			<fieldset id="kerzenart">
+			<legend> Wähle die Beleuchtung </legend>
+			</fieldset>
+	
+			<fieldset id="lieferoptionen">
+				<legend> Wie schnell soll es bei dir sein? </legend>
+				<select name="Lieferoptionen" id="Lieferoptionen">
+				<option value="option1" selected>Standard (5 Tage)</option>
+				<option value="option2">Prime (3 Tage)</option>
+				<option value="option3">Express (kommt am nächsten Tag)</option>
+				</select>
+			</fieldset>
+	
+			<fieldset id="lieferadresse">
+				<legend> Wohin sollen wir liefern? </legend>
+				<input type="text" name="Name" placeholder="Name" required id="name"/>
+				<input type="text" name="Vorname" placeholder="Vorname" required id="vorname"/>
+				<input type="text" name="Straße" placeholder="Straße und Hausnummer" required id="strasse"/>
+				<input type="text" name="PLZ" placeholder="Postleitzahl" required id="PLZ"/>
+				<input type="text" name="Ort" placeholder="Ort" required id="ort"/>
+			</fieldset>
+
+</body>
+</html>

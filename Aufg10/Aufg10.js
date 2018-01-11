@@ -1,0 +1,199 @@
+var Form;
+(function (Form) {
+    window.addEventListener("load", init);
+    let schmuck = ["glitzernde Kugeln (bunt)", "matte Kugeln (bunt)", "silber Kugeln", "goldene Kugeln", "Lametta", "tanzende Figuren"];
+    let baumkrone = ["Engel", "Sternschnuppe", "Klassischer Stern"];
+    let halterung = ["grün", "gold", "braun", "silber"];
+    let anzahl = 0;
+    let numberFields = [];
+
+    let toppingCheckboxes = [];
+    let toppingNumber = 0;
+    function init(_event) {
+        console.log("Init");
+        let fieldsets = document.getElementsByTagName("fieldset");
+        //EventListener an fieldsets
+        for (let i = 0; i < fieldsets.length; i++) {
+            let fieldset = fieldsets[i];
+            fieldset.addEventListener("change", handleChange);
+        }
+        document.getElementById("container").innerText = halterung[0];
+        document.getElementById("check").addEventListener("click", handleChange);
+        createContainerField();
+        //2.Version
+        createFlavorField();
+        createToppingField();
+    }
+    ;
+    
+    function calculatePrice() {
+        let scoopPrice = 1;
+        let toppingPrice = toppingNumber * 0.4;
+        let sum = anzahl * scoopPrice + toppingPrice;
+        document.getElementById("total").textContent = "" + (sum.toFixed(2)) + "€";
+        console.log("Kugeln: " + anzahl + "|Kugelpreis: " + scoopPrice + "|toppinganzahl:" + "|toppingPrice:" + toppingPrice);
+    }
+    function handleChange(_event) {
+    	
+        let target = _event.target;
+        console.log("Changed " + target.name + " to " + target.value);
+        //*/
+        //*/ note: this == _event.currentTarget in an event-handler
+        if (this.id == "radio") {
+        }
+        if (this.id == "check") {
+            let addressField = document.getElementById("address");
+            let inputFields = addressField.getElementsByTagName("input");
+            for (let i = 0; i < inputFields.length; i++) {
+                let image = document.getElementById("checkImg");
+                if (inputFields[i].checkValidity() == false) {
+                    image.src = "Versuche es nochmal";
+                    console.log("false");
+                    image.style.display = "inline";
+                    inputFields[i].style.backgroundColor = "#fe8181";
+                }
+                else {
+                    image.src = "Bestellung wird abgeschickt";
+                    console.log("true");
+                    image.style.display = "inline";
+                    inputFields[i].style.backgroundColor = "#0F924A";
+                }
+            }
+        }
+
+        if (this.className == "flavorField") {
+            anzahl = 0;
+            let outputField = document.getElementById("flavorOutput");
+            outputField.innerText = "";
+            for (let i = 0; i < numberFields.length; i++) {
+                let valueString = numberFields[i].value;
+                anzahl += parseInt(valueString);
+                if (parseInt(numberFields[i].value) > 0) {
+                    outputField.innerHTML += numberFields[i].id + ": " + numberFields[i].value + "<br>";
+                }
+            }
+            calculatePrice();
+        }
+        //        if (this.id == "toppings") {
+        console.log("Changed " + target.name + " to " + target.value);
+        let toppingOutput = document.getElementById("topping");
+        let toppingField = document.getElementById("toppings");
+        toppingOutput.innerText = "";
+        let toppingCheckboxes = toppingField.getElementsByTagName("input");
+        toppingNumber = 0;
+        console.log(toppingCheckboxes);
+        for (let i = 0; i < toppingCheckboxes.length; i++) {
+            if (toppingCheckboxes[i].checked == true) {
+                toppingOutput.innerHTML += toppingCheckboxes[i].value + "<br>";
+                toppingCheckboxes[i].disabled = false;
+                toppingNumber++;
+            }
+            if (toppingCheckboxes[i].checked == false) {
+                if (toppingNumber >= anzahl) {
+                    toppingCheckboxes[i].disabled = true;
+                }
+                else {
+                    toppingCheckboxes[i].disabled = false;
+                }
+            }
+            //            }
+            calculatePrice();
+        }
+
+        if (this.name == "containerChoice") {
+            document.getElementById("container").innerText = target.value;
+        }
+    }
+
+    function createContainerField() {
+        let containerField = document.createElement("fieldset");
+        containerField.id = "radio";
+        let mainDiv = document.getElementById("main");
+        mainDiv.appendChild(containerField);
+        //Legende für containerField
+        let legend = document.createElement("legend");
+        legend.innerText = "Halterung";
+        containerField.appendChild(legend);
+        let containerCheckboxes = [];
+        //Behälter-Optionen für Array-Einträge
+        for (let i = 0; i < halterung.length; i++) {
+            let container = document.createElement("input");
+            container.type = "radio";
+            container.value = halterung[i];
+            container.name = "containerChoice";
+            container.id = "radio" + i + 1;
+            containerField.appendChild(container);
+            containerCheckboxes.push(container);
+            containerCheckboxes[0].checked = true;
+            //Labels für Behälterauswahl
+            let containerLabel = document.createElement("label");
+            containerLabel.textContent = halterung[i];
+            containerLabel.htmlFor = "radio" + i + 1;
+            containerField.appendChild(containerLabel);
+            container.addEventListener("change", handleChange); //listener an Auswahl
+        }
+    }
+    
+    function createFlavorField() {
+        //flavorField erstellen
+        let flavorField = document.createElement("fieldset");
+        flavorField.className = "flavorField";
+        let mainDiv = document.getElementById("main");
+        mainDiv.appendChild(flavorField);
+        //Legende
+        let legend = document.createElement("legend");
+        legend.innerText = "Schmuck";
+        flavorField.appendChild(legend);
+        //Optionen für Array-Einträge
+        for (let i = 0; i < schmuck.length; i++) {
+            //Number-Feld für Eiskugel-Anzahl
+            let numberInput = document.createElement("input");
+            numberInput.type = "number";
+            numberInput.id = schmuck[i];
+            numberInput.name = "numberInput";
+            numberInput.step = "1";
+            numberInput.min = "1";
+            numberInput.max = "10";
+            numberInput.value = "0";
+            numberInput.style.display = "inline";
+            flavorField.appendChild(numberInput);
+            numberFields.push(numberInput);
+            let nrLabel = document.createElement("label");
+            nrLabel.textContent = schmuck[i];
+            nrLabel.htmlFor = numberInput.id;
+            flavorField.appendChild(nrLabel);
+            nrLabel.addEventListener("change", handleChange);
+            flavorField.addEventListener("change", handleChange); //eventListener an Select-Feld
+            numberInput.addEventListener("change", handleChange); //eventListener an anzahl-Feld
+        } //createFlavorField
+    }
+    
+    function createToppingField() {
+        //toppingField erstellen
+        let toppingField = document.createElement("fieldset");
+        toppingField.id = "toppings";
+        let mainDiv = document.getElementById("main");
+        mainDiv.appendChild(toppingField);
+        //Legende
+        let legend = document.createElement("legend");
+        legend.innerText = "Baumkrone";
+        toppingField.appendChild(legend);
+        toppingField.addEventListener("change", handleChange);
+        //checkbox für Array-Einträge
+        for (let i = 0; i < baumkrone.length; i++) {
+            let topping = document.createElement("input");
+            topping.type = "checkbox";
+            topping.value = baumkrone[i];
+            topping.name = "toppingCheckbox";
+            topping.id = "Checkbox" + i;
+            toppingField.appendChild(topping);
+            toppingCheckboxes.push(topping);
+            //Label für checkboxen
+            let toppingLabel = document.createElement("label");
+            toppingLabel.textContent = baumkrone[i];
+            toppingLabel.htmlFor = topping.id;
+            toppingField.appendChild(toppingLabel);
+        }
+    }
+})(Form || (Form = {})); //namespace
+//# sourceMappingURL=Aufg10.js.map

@@ -1,0 +1,72 @@
+<!--
+Aufgabe: Aufgabe 10 FormElements: Weihnachtsbaumkonfigurator
+Name: Leah Kappelmann
+Matrikel: 254908
+Datum: 05.01.18
+	
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Aufgabe 10</title>
+<link rel="stylesheet" href="Aufg10.css">
+<script type="text/javascript" src="Aufg10.js"></script>
+</head>
+<body>
+
+	<header>
+		<h1>Weihnachtsbaumkonfigurator</h1>
+		<img id="checkImg" alt="check" src="blaufichte.jpg">
+		<img id="checkImg" alt="check" src="douglasie.png">
+		<img id="checkImg" alt="check" src="weissfichte.jpg">
+	</header>
+
+	<div id="main">
+	</div>
+ 
+	<aside>
+		<fieldset id="cart">
+			<legend>Warenkorb</legend>
+			<span>Container</span>
+			<div id="container"></div>
+			<span>Auswahl</span>
+			<div id="flavorOutput"></div>
+			<div id="topping"></div>
+			<span>Preis</span>
+			<div id="total"></div>
+		</fieldset>
+		<fieldset id="delivery">
+			<legend>Lieferoptionen</legend>
+			<input type="radio" name="Delivery" value="Express" id="radio1" />
+			<label for="radio1">Express (kommt in zwei Tagen)</label> 
+			<input type="radio"
+				name="Delivery" value="Premium Shipping" id="radio2" /> 
+					<label for="radio2">Prime (kommt am nächsten Werktag)</label> 
+				<input type="radio" name="Delivery" value="Standard Shipping"
+				id="radio3" /> <label for="radio3">Standard (kommt innerhalb von 3 Tagen)</label>
+		</fieldset>
+		<fieldset id="address">
+			<legend> Addresse </legend>
+			Vorname  <input type="text" name="FirstName" required />
+			<br>
+			Nachname  <input type="text" name="LastName" required />
+			<br>
+			Straße und Hausnummer  <input type="text" name="Addresse" required />
+			<br>
+			Ort  <input type="text" name="Town" required />
+			<br>
+			Postleitzahl <input type="text" name="PostalCode" pattern="[0-9, A-Z]{5}" required />
+			<hr />
+			Email <input type="email" name="Email" required/>
+		</fieldset>
+		
+		<button type="button" id="check">Bestellen</button><img id="checkImg" alt="check" src="wrong.png">
+		
+		
+	</aside>
+</body>
+</html>
