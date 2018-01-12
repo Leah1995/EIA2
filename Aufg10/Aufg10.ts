@@ -23,8 +23,8 @@ namespace Form {
         document.getElementById("check").addEventListener("click", handleChange);
         createContainerField();
 
-        //2.Version
-        createFlavorField();
+        
+        createSchmuckField();
         createToppingField();
     }
 
@@ -74,9 +74,9 @@ namespace Form {
         }
 
 
-        if (this.className == "flavorField") {
+        if (this.className == "schmuckField") {
             scoopNumber = 0;
-            let outputField: HTMLElement = document.getElementById("flavorOutput");
+            let outputField: HTMLElement = document.getElementById("schmuckOutput");
             outputField.innerText = "";
             for (let i: number = 0; i < numberFields.length; i++) {
                 let valueString: string = numberFields[i].value;
@@ -90,7 +90,7 @@ namespace Form {
         }
 
 
-        //        if (this.id == "toppings") {
+        
         console.log("Changed " + target.name + " to " + target.value);
         let toppingOutput: HTMLElement = document.getElementById("topping");
         let toppingField: HTMLElement = document.getElementById("toppings");
@@ -115,7 +115,7 @@ namespace Form {
                 }
             }
 
-            //            }
+            
             calculatePrice();
         }
 
@@ -155,7 +155,7 @@ namespace Form {
 
 
 
-            //Labels für Behälterauswahl
+            //Labels
             let containerLabel: HTMLLabelElement = document.createElement("label");
             containerLabel.textContent = containers[i];
             containerLabel.htmlFor = "radio" + i + 1;
@@ -167,18 +167,18 @@ namespace Form {
 
 
     function createFlavorField(): void {
-        //flavorField erstellen
+        // Field erstellen
         let flavorField: HTMLFieldSetElement = document.createElement("fieldset");
-        flavorField.className = "flavorField";
+        flavorField.className = "schmuckField";
         let mainDiv: HTMLElement = document.getElementById("main");
         mainDiv.appendChild(flavorField);
 
-        //Legende
+        // Legende
         let legend: HTMLLegendElement = document.createElement("legend");
-        legend.innerText = "Choose Your Flavors";
-        flavorField.appendChild(legend);
+        legend.innerText = "Schmuck";
+        schmuckField.appendChild(legend);
 
-        //Optionen für Array-Einträge
+        // Optionen für Array-Einträge
         for (let i: number = 0; i < flavors.length; i++) {
 
             //Number-Feld für Eiskugel-Anzahl
@@ -191,7 +191,7 @@ namespace Form {
             numberInput.max = "5";
             numberInput.value = "0";
             numberInput.style.display = "inline";
-            flavorField.appendChild(numberInput);
+            schmuckField.appendChild(numberInput);
             numberFields.push(numberInput);
 
 
@@ -199,11 +199,11 @@ namespace Form {
             let nrLabel: HTMLLabelElement = document.createElement("label");
             nrLabel.textContent = flavors[i];
             nrLabel.htmlFor = numberInput.id;
-            flavorField.appendChild(nrLabel);
+            schmuckField.appendChild(nrLabel);
             nrLabel.addEventListener("change", handleChange);
 
 
-            flavorField.addEventListener("change", handleChange); //eventListener an flavorSelect-Feld
+            schmuckField.addEventListener("change", handleChange); //eventListener an schmuckSelect-Feld
             numberInput.addEventListener("change", handleChange); //eventListener an scoopNumber-Feld
         }//createFlavorField
     }
@@ -240,7 +240,6 @@ namespace Form {
             toppingField.appendChild(toppingLabel);
         }
     }
-
 
 
 } //namespace
