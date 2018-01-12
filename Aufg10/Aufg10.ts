@@ -124,8 +124,6 @@ namespace Form {
 
             document.getElementById("container").innerText = target.value;
         }
-
-
     }
 
 
@@ -166,7 +164,7 @@ namespace Form {
 
 
 
-    function createFlavorField(): void {
+    function createSchmuckField(): void {
         // Field erstellen
         let flavorField: HTMLFieldSetElement = document.createElement("fieldset");
         flavorField.className = "schmuckField";
@@ -181,7 +179,7 @@ namespace Form {
         // Optionen für Array-Einträge
         for (let i: number = 0; i < flavors.length; i++) {
 
-            //Number-Feld für Eiskugel-Anzahl
+            //Number-Feld
             let numberInput: HTMLInputElement = document.createElement("input");
             numberInput.type = "number";
             numberInput.id = flavors[i];
@@ -203,9 +201,9 @@ namespace Form {
             nrLabel.addEventListener("change", handleChange);
 
 
-            schmuckField.addEventListener("change", handleChange); //eventListener an schmuckSelect-Feld
-            numberInput.addEventListener("change", handleChange); //eventListener an scoopNumber-Feld
-        }//createFlavorField
+            schmuckField.addEventListener("change", handleChange); // eventListener an schmuckSelect-Feld
+            numberInput.addEventListener("change", handleChange); // eventListener an scoopNumber-Feld
+        } // create Field
     }
 
     function createToppingField(): void {
