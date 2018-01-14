@@ -7,70 +7,74 @@ Datum: 05.01.18
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   -->
 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Aufg. 10</title></head>
+<meta charset="utf-8" />
+<title>Aufgabe 10</title>
 <link rel="stylesheet" href="Aufg10.css">
+<script type="text/javascript" src="Aufg10.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="Aufg10.js"></script>
 
-<header>
-		<h1>Weihnachtsbaumkonfigurator</h1>
+	<header>
+		<h1>Dein Traum-Baum</h1>
+		<img src="douglasie.jpg" alt="Baum">
+		<img src="grunfichte.jpg" alt="Baum">
+		<img src="weissfichte.jpg" alt="Baum">
+		<img src="blaufichte.jpg" alt="Baum">
 	</header>
-	
-			<fieldset id="bestelluebersicht">
-				<legend> Bestellübersicht </legend>
-				<h4>Dein Traum-Baum</h4>
-				<p id="auswahl"></p>
-				<h4>PREIS</h4>
-				<p id="summe"></p>
-				
-			<button id="bestellungAbschicken" type="button">Stimmt alles? Dann bestätige hier deine Bestellung</button>
-       		</fieldset>
+	<hr>
 
-			<fieldset id="baumart">
-				<legend> Welcher Baum soll es sein? </legend>
-				<input type="radio" name="Radiogroup" value="radio1" id="radio1" checked/>
-				<label for="radio1">Douglasie</label> <img alt="douglasie" src="douglasie.jpg">
-				<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
-				<label for="radio2">Grüne Norwegische Fichte</label> <img alt="Norweger" src="grunfichte.jpg">
-				<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
-				<label for="radio3">Weiße Nordische Fichte</label> <img alt="Weisse Fichte" src="weissfichte.jpg">
-				<input type="radio" name="Radiogroup" value="radio4" id="radio4"/>
-				<label for="radio4">Blaufichte</label> <img alt="blaufichte" src="blaufichte.jpg">				
-			</fieldset>
-			
-			<fieldset id="krone">
-				<legend>Hier kannst du den Baumkronenschmuck wählen</legend>			
-			</fieldset>
-	
-			<fieldset id="schmuckartikel">
-				<legend>Wie soll dein Baum geschmückt werden?</legend>
-			</fieldset>
-
-			<fieldset id="kerzenart">
-			<legend> Wähle die Beleuchtung </legend>
-			</fieldset>
-	
-			<fieldset id="lieferoptionen">
-				<legend> Wie schnell soll es bei dir sein? </legend>
-				<select name="Lieferoptionen" id="Lieferoptionen">
-				<option value="option1" selected>Standard (5 Tage)</option>
-				<option value="option2">Prime (3 Tage)</option>
-				<option value="option3">Express (kommt am nächsten Tag)</option>
-				</select>
-			</fieldset>
-	
-			<fieldset id="lieferadresse">
-				<legend> Wohin sollen wir liefern? </legend>
-				<input type="text" name="Name" placeholder="Name" required id="name"/>
-				<input type="text" name="Vorname" placeholder="Vorname" required id="vorname"/>
-				<input type="text" name="Straße" placeholder="Straße und Hausnummer" required id="strasse"/>
-				<input type="text" name="PLZ" placeholder="Postleitzahl" required id="PLZ"/>
-				<input type="text" name="Ort" placeholder="Ort" required id="ort"/>
-			</fieldset>
-
+	<div id="main">
+	</div>
+ 
+	<aside>
+		<fieldset id="cart">
+			<legend>Warenkorb</legend>
+			<hr>
+			<span>HALTERUNG</span>
+			<div id="container"></div>
+			<span>SCHMUCK</span>
+			<div id="schmuckOutput"></div>
+			<span>BAUMART</span>
+			<div id="treetype"></div>
+			<div id="topping"></div>
+			<span>Summe + Standardpreis von 50â‚¬ </span>
+			<div id="total"></div>
+			<hr>
+		</fieldset>
+		<fieldset id="delivery">
+			<legend>Lieferoptionen</legend>
+			<input type="radio" name="Delivery" value="Express" id="radio1" />
+			<label for="radio1">Express (kommt in zwei Tagen)</label> 
+			<input type="radio"
+				name="Delivery" value="Premium Shipping" id="radio2" /> 
+					<label for="radio2">Prime (kommt am nÃ¤chsten Werktag)</label> 
+				<input type="radio" name="Delivery" value="Standard Shipping"
+				id="radio3" /> <label for="radio3">Standard (kommt innerhalb von 3 Tagen)</label>				
+			<hr>
+		</fieldset>
+		<fieldset id="address">
+			<legend> Addresse </legend>
+			Vorname  <input type="text" name="FirstName" required />
+			<br>
+			Nachname  <input type="text" name="LastName" required />
+			<br>
+			StraÃŸe und Hausnummer  <input type="text" name="Addresse" required />
+			<br>
+			Ort  <input type="text" name="Town" required />
+			<br>
+			Postleitzahl <input type="text" name="PostalCode" pattern="[0-9, A-Z]{5}" required />
+			<br>
+			Email <input type="email" name="Email" required/>
+			<hr>
+		</fieldset>
+		
+		<button type="button" id="check">Bestellen</button><img id="checkImg" alt="check" src="wrong.png">
+		
+		
+	</aside>
 </body>
 </html>

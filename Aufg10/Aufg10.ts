@@ -114,7 +114,6 @@ namespace Form {
                     toppingCheckboxes[i].disabled = false;
                 }
             }
-
             
             calculatePrice();
         }
