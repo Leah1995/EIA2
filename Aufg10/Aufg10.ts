@@ -1,55 +1,54 @@
 namespace Form {
     window.addEventListener("load", init);
 
+    // Arrays
     let flavors: string[] = ["glitzernde Kugeln (bunt)", "matte Kugeln (bunt)", "silber Kugeln", "goldene Kugeln", "Lametta", "tanzende Figuren"];
-    let toppings: string[] = ["Engel", "Sternschnuppe", "Klassischer Stern", "Whipped Cream", "Grated Coconut", "Vanilla Sauce", "Rainbow Sprinkles"];
+    let toppings: string[] = ["Engel", "Sternschnuppe", "Klassischer Stern"];
     let containers: string[] = ["grün", "gold", "braun", "silber"];
-    let scoopNumber: number = 0;
+    let articleNumber: number = 0;
     let numberFields: HTMLInputElement[] = [];
     let toppingCheckboxes: HTMLInputElement[] = [];
     let toppingNumber: number = 0;
+    console.log("d");
 
 
     function init(_event: Event): void {
         console.log("Init");
-        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset"); // fieldset = gruppiert verwandte Elemente in einer Form
 
-        //EventListener an fieldsets
+        // EventListener an fieldsets
         for (let i: number = 0; i < fieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
-        }
+
+        } // for-Schleife Ende
+
         document.getElementById("container").innerText = containers[0];
         document.getElementById("check").addEventListener("click", handleChange);
-        createContainerField();
 
-        
+        createContainerField();
         createSchmuckField();
         createToppingField();
-    }
-
-
+        
+    } // Function Ende
 
 
     function calculatePrice(): void {
-        let scoopPrice: number = 1;
+        let articlePrice: number = 1;
         let toppingPrice: number = toppingNumber * 0.4;
-        let sum: number = scoopNumber * scoopPrice + toppingPrice;
+        let sum: number = articleNumber * articlePrice + toppingPrice;
 
         document.getElementById("total").textContent = "" + (sum.toFixed(2)) + "€";
-        console.log("Kugeln: " + scoopNumber + "|Kugelpreis: " + scoopPrice + "|toppinganzahl:" + "|toppingPrice:" + toppingPrice);
+        console.log("Kugeln: " + articleNumber + "|Kugelpreis: " + articlePrice + "|toppinganzahl:" + "|toppingPrice:" + toppingPrice);
 
-    }
+    } // Function Ende
 
     function handleChange(_event: Event): void {
-        //console.log(_event);
-        //*/
+
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
         console.log("Changed " + target.name + " to " + target.value);
 
-
-        // this == _event.currentTarget in an event-handler
-        if (this.id == "radio"): number; {
+        if (this.id == "radio"): void {
             //
         }
 
@@ -64,33 +63,36 @@ namespace Form {
                     console.log("false");
                     image.style.display = "inline";
                     inputFields[i].style.backgroundColor = "#0F924A";
-                } else {
+                }
+                else {
                     image.src = "Bestellung wird abgeschickt";
                     console.log("true");
                     image.style.display = "inline";
                     inputFields[i].style.backgroundColor = "#0F924A";
                 }
-            }
-        }
+
+            } // for-Schleife Ende
+
+        } // Ende if-Bedingung
 
 
         if (this.className == "schmuckField") {
-            scoopNumber = 0;
+            articleNumber = 0;
             let outputField: HTMLElement = document.getElementById("schmuckOutput");
             outputField.innerText = "";
             for (let i: number = 0; i < numberFields.length; i++) {
                 let valueString: string = numberFields[i].value;
-                scoopNumber += parseInt(valueString);
+                articleNumber += parseInt(valueString);
 
                 if (parseInt(numberFields[i].value) > 0) {
                     outputField.innerHTML += numberFields[i].id + ": " + numberFields[i].value + "<br>";
                 }
-            }
+            } // for-Schleife Ende
+
             calculatePrice();
-        }
 
+        } // if-Bedinung Ende
 
-        
         console.log("Changed " + target.name + " to " + target.value);
         let toppingOutput: HTMLElement = document.getElementById("topping");
         let toppingField: HTMLElement = document.getElementById("toppings");
@@ -98,9 +100,8 @@ namespace Form {
         let toppingCheckboxes: NodeListOf<HTMLInputElement> = toppingField.getElementsByTagName("input");
         toppingNumber = 0;
 
-        console.log(toppingCheckboxes);
-
         for (let i: number = 0; i < toppingCheckboxes.length; i++) {
+
             if (toppingCheckboxes[i].checked == true) {
                 toppingOutput.innerHTML += toppingCheckboxes[i].value + "<br>";
                 toppingCheckboxes[i].disabled = false;
@@ -108,22 +109,25 @@ namespace Form {
             }
 
             if (toppingCheckboxes[i].checked == false) {
-                if (toppingNumber >= scoopNumber) {
+                if (toppingNumber >= articleNumber) {
                     toppingCheckboxes[i].disabled = true;
-                } else {
+                }
+                else {
                     toppingCheckboxes[i].disabled = false;
                 }
             }
-            
+
             calculatePrice();
-        }
+
+        } // for-Schleife Ende
 
 
         if (this.name == "containerChoice") {
 
             document.getElementById("container").innerText = target.value;
         }
-    }
+
+    } // Function Ende
 
 
     function createContainerField(): void {
@@ -150,16 +154,15 @@ namespace Form {
             containerCheckboxes.push(container);
             containerCheckboxes[0].checked = true;
 
-
-
             //Labels
             let containerLabel: HTMLLabelElement = document.createElement("label");
             containerLabel.textContent = containers[i];
             containerLabel.htmlFor = "radio" + i + 1;
             containerField.appendChild(containerLabel);
             container.addEventListener("change", handleChange); //listener an Auswahl
-        }
-    }
+
+        } // for-Schleife Ende
+    } // Function Ende
 
 
 
@@ -191,8 +194,6 @@ namespace Form {
             schmuckField.appendChild(numberInput);
             numberFields.push(numberInput);
 
-
-
             let nrLabel: HTMLLabelElement = document.createElement("label");
             nrLabel.textContent = flavors[i];
             nrLabel.htmlFor = numberInput.id;
@@ -201,22 +202,22 @@ namespace Form {
 
 
             schmuckField.addEventListener("change", handleChange); // eventListener an schmuckSelect-Feld
-            numberInput.addEventListener("change", handleChange); // eventListener an scoopNumber-Feld
+            numberInput.addEventListener("change", handleChange); // eventListener an articleNumber-Feld
         } // create Field
-    }
+    } // Function Ende
 
     function createToppingField(): void {
 
         //toppingField erstellen
         let toppingField: HTMLFieldSetElement = document.createElement("fieldset");
         toppingField.id = "Beleuchtung";
-        let mainDiv: HTMLElement = document.getElementById("main");
+        let mainDiv: HTMLElement = document.getElementById("main"); // getElementByID = durchsucht DOM und liefert einen Verweis auf das Objekt und die benötigte ID
         mainDiv.appendChild(toppingField);
 
         //Legende
         let legend: HTMLLegendElement = document.createElement("legend");
         legend.innerText = "Füge eine Beleuchtung hinzu";
-        toppingField.appendChild(legend);
+        toppingField.appendChild(legend); // fügt Text hinzu
         toppingField.addEventListener("change", handleChange);
 
         //checkbox für Array-Einträge
@@ -227,16 +228,16 @@ namespace Form {
             topping.name = "toppingCheckbox";
             topping.id = "Checkbox" + i;
             toppingField.appendChild(topping);
-            toppingCheckboxes.push(topping);
-
+            toppingCheckboxes.push(topping)
 
             //Label für checkboxen
             let toppingLabel: HTMLElement = document.createElement("label");
             toppingLabel.textContent = toppings[i];
             toppingLabel.htmlFor = topping.id;
             toppingField.appendChild(toppingLabel);
-        }
-    }
+
+        } // for-Schleife Ende
+    } // Function Ende
 
 
 } //namespace

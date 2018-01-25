@@ -7,6 +7,7 @@ var Form;
     let halterung = ["grün", "gold", "braun", "silber"];
     let anzahl = 0;
     let numberFields = [];
+    console.log("arrays");
 
     let toppingCheckboxes = [];
     let toppingNumber = 0;
@@ -25,7 +26,8 @@ var Form;
         createFlavorField();
         createToppingField();
     }
-    ;
+    console.log("komma");
+    
     
     function calculatePrice() {
         let scoopPrice = 0.8;
@@ -34,17 +36,18 @@ var Form;
         document.getElementById("total").textContent = "" + (sum.toFixed(2)) + "";
         console.log("Kugeln: " + anzahl + "|Kugelpreis: " + scoopPrice + "|toppinganzahl:" + "|toppingPrice:" + toppingPrice);
     }
+    console.log("scoop");
     function handleChange(_event) {
     	
         let target = _event.target;
         console.log("Changed " + target.name + " to " + target.value);
-        
-        // note: this == _event.currentTarget in an event-handler
+                
         if (this.id == "radio") {
         }
         if (this.id == "check") {
             let addressField = document.getElementById("address");
             let inputFields = addressField.getElementsByTagName("input");
+            console.log("a");
             for (let i = 0; i < inputFields.length; i++) {
                 let image = document.getElementById("checkImg");
                 if (inputFields[i].checkValidity() == false) {
@@ -61,6 +64,7 @@ var Form;
                 }
             }
         }
+        console.log("adresse");
 
         if (this.className == "flavorField") {
             anzahl = 0;
@@ -74,9 +78,9 @@ var Form;
                 }
             }
             calculatePrice();
+            console.log("value");
         }
-        //        if (this.id == "toppings") {
-        console.log("Changed " + target.name + " to " + target.value);
+        
         let toppingOutput = document.getElementById("topping");
         let toppingField = document.getElementById("toppings");
         toppingOutput.innerText = "";
@@ -97,9 +101,10 @@ var Form;
                     toppingCheckboxes[i].disabled = false;
                 }
             }
-            //            }
+            
             calculatePrice();
         }
+        console.log("price");
 
         if (this.name == "containerChoice") {
             document.getElementById("container").innerText = target.value;
@@ -111,7 +116,6 @@ var Form;
         containerField.id = "radio";
         let mainDiv = document.getElementById("main");
         mainDiv.appendChild(containerField);
-        //Legende für containerField
         let legend = document.createElement("legend");
         legend.innerText = "HALTERUNG";
         containerField.appendChild(legend);

@@ -72,8 +72,7 @@ svg, figure, button, option {
 aside{
 	float:left;
 	width: 50%;
-	font-size:15px;
-	
+	font-size:15px;	
 }
 
 #main fieldset, aside fieldset {

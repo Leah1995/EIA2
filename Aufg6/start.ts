@@ -9,7 +9,7 @@ namespace Aufgabe6 {
 
     // Initialisierung
     function init(): void {
-        
+
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
 
@@ -180,7 +180,7 @@ namespace Aufgabe6 {
         crc2.beginPath();
         crc2.moveTo(_x, _y);
         crc2.lineTo(_x + 20, _y + 70);
-        crc2.lineTo(_x - 20, _y + 70);
+        crc2.lineTo(_x - 20, y + 70);
         crc2.closePath();
         crc2.fillStyle = _topColor;
         crc2.fill();
@@ -191,7 +191,7 @@ namespace Aufgabe6 {
         console.log("Timeout");
 
         // Zurücksetzen und neu erstellen
-        crc2.clearRect(0, 0, 800, 600);       
+        crc2.clearRect(0, 0, 800, 600); 
         crc2.putImageData(image, 0, 0);
 
 
