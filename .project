@@ -20,10 +20,15 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.palantir.typescript.typeScriptBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.palantir.typescript.typeScriptNature</nature>
 		<nature>com.palantir.tslint.tslintNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+		<nature>com.palantir.typescript.typeScriptNature</nature>
 	</natures>
 </projectDescription>

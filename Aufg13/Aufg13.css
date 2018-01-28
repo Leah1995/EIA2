@@ -1,0 +1,22 @@
+/* Schriftart */
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat:700|Playball|Quicksand|Sacramento');
+
+body{
+	font-family: 'Quicksand', sans-serif;
+    margin: 1%;	
+}
+
+fieldset {
+	width: 300px;
+	height: auto;
+	
+}
+button {
+	background-color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 80%;
+    font-family: 'Quicksand', sans-serif;
+    
+}

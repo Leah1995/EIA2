@@ -50,7 +50,7 @@ namespace Form {
 
         if (this.id == "radio"): void {
             //
-        }
+        };
 
         if (this.id == "check") {
             let addressField: HTMLElement = document.getElementById("address");
@@ -228,7 +228,7 @@ namespace Form {
             topping.name = "toppingCheckbox";
             topping.id = "Checkbox" + i;
             toppingField.appendChild(topping);
-            toppingCheckboxes.push(topping)
+            toppingCheckboxes.push(topping);
 
             //Label für checkboxen
             let toppingLabel: HTMLElement = document.createElement("label");
